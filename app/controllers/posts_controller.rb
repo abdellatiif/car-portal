@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
-    render json: @post
+    render Text:' @post'
   end
 
   # POST /posts
@@ -46,6 +46,6 @@ class PostsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:post).permit(:type, :yearofm, :kilos, :picture)
+      params.require(:post).permit(:type, :description, :productionyear)
     end
 end

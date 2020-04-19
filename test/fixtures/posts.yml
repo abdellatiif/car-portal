@@ -2,12 +2,10 @@
 
 one:
   type: 
-  yearofm: 
-  kilos: 1
-  picture: MyText
+  description: MyText
+  productionyear: 1
 
 two:
   type: 
-  yearofm: 
-  kilos: 1
-  picture: MyText
+  description: MyText
+  productionyear: 1
