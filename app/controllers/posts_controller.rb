@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   #before_action :authenticate_user!, except: [:show, :index] 
 
   # GET /posts
+ 
   def index
     @posts = Post.all
 
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new(post_params)
-
+  
     if @post.save
       render json: @post, status: :created, location: @post
     else
@@ -41,6 +42,7 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+   
     def set_post
       @post = Post.find(params[:id])
     end
@@ -48,5 +50,6 @@ class PostsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def post_params
       params.require(:post).permit(:type, :description, :productionyear)
+      params.require(:post).permit(:picture)
     end
 end

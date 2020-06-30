@@ -16,7 +16,7 @@ class CarBrandsController < ApplicationController
   # POST /car_brands
   def create
     @car_brand = CarBrand.new(car_brand_params)
-
+    @car_brand = car_brand.create(car_brand_params)
     if @car_brand.save
       render json: @car_brand, status: :created, location: @car_brand
     else
@@ -40,6 +40,9 @@ class CarBrandsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def car_brands_params
+      params.require(:car_brand).permit(:picture)
+    end
     def set_car_brand
       @car_brand = CarBrand.find(params[:id])
     end
