@@ -1,22 +1,15 @@
-import React from 'react';
- import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-//  componentDidMount(){  
-//fetch('/api/posts')
-   // .then(response => response.json())
-  //  .then(json => console.log(json)) 
- // };
-    
-  
-   return (
-    <div className="App">
-       Abooda  
-    <p> this is abooda</p> 
-    </div>
+import Blog from './containers/Blog/Blog';
 
-  );  
- // return React.createElement('div',{className:'App' },React.createElement('h1',null, 'this is abooda'));
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Blog />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_095337) do
+ActiveRecord::Schema.define(version: 2020_07_08_202518) do
 
   create_table "car_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2020_06_26_095337) do
     t.string "picture_content_type"
     t.integer "picture_file_size"
     t.datetime "picture_updated_at"
+    t.bigint "car_brand_id", null: false
+    t.index ["car_brand_id"], name: "index_posts_on_car_brand_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -67,4 +69,5 @@ ActiveRecord::Schema.define(version: 2020_06_26_095337) do
   end
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "posts", "car_brands"
 end
