@@ -1,56 +1,86 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import Header from '../../components/Header/Header';
 import Post from '../../components/Post/Post';
+import CarBrand from '../../components/CarBrand/CarBrand';
+import Button from '../../components/Button/Button';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
+import SignIn from '../../components/SignIn/SignIn';
+
 import './Blog.css';
 
 class Blog extends Component {
     state = {
-        posts: [],
+        // posts: [],
+        carBrands: [],
+        selectedCarBrand: null,
         selectedPostId: null
+   
     }
 
     componentDidMount () {
-        axios.get( '/api/v1/posts' )
+        // axios.get( '/api/v1/posts' )
+        //     .then( response => {
+        //       const posts = response.data.slice(0, 4);
+        //         const updatedPosts = posts.map(post => {
+        //             return {
+        //                 ...post
+        //             }
+        //         });
+        //         this.setState({posts: updatedPosts});
+             //   console.log( response );
+            // } );
+            axios.get( '/api/v1/car_brands' )
             .then( response => {
-                const posts = response.data.slice(0, 4);
-                const updatedPosts = posts.map(post => {
+              const carBrands = response.data.slice(0, 4);
+                const updatedCarBrands = carBrands.map(carBrand => {
                     return {
-                        ...post,
-                        carBrand: 'abooda'
+                        ...carBrand
                     }
                 });
-                this.setState({posts: updatedPosts});
-                // console.log( response );
+                this.setState({carBrands: updatedCarBrands});
+             //   console.log( response );
             } );
     }
 
-    postSelectedHandler = (id) => {
-        this.setState({selectedPostId: id});
+    // postSelectedHandler = (id) => {
+    //     this.setState({selectedPostId: id});
+    // }
+    CarBrandSelectedHandler = (id) => {
+        this.setState({selectedCarBrandId: id});
     }
 
     render () {
-        const posts = this.state.posts.map(post => {
-            return <Post 
-                key={post.id} 
-                productionyear={post.productionyear} 
-                description={post.description}
-                clicked={() => this.postSelectedHandler(post.id)} />;
+        console.log("here   ")
+        const carBrands = this.state.carBrands.map(car_brand => {
+            return <car_brand
+                key={car_brand.id}
+                car_brand = {car_brand} 
+                clicked={() => this.CarBrandSelectedHandler(CarBrand.id)} />;
         });
-
+       // console.log(posts)
+    //    const posts = this.state.posts.map(post => {
+    //     return <Post 
+    //         key={post.id}
+    //         post = {post} 
+    //         clicked={() => this.postSelectedHandler(post.id)} />;
+    // });
         return (
+            
             <div>
-                <section className="Posts">
-                    {posts}
+               
+                <h1> CarBrand</h1>
+                
+                <section className="carBrands">
+                    {carBrands}
                 </section>
-                <section>
-                    <FullPost id={this.state.selectedPostId} />
-                </section>
-                <section>
-                    <NewPost />
-                </section>
+                {/* <section> */}
+                    {/* <FullPost id={this.state.selectedPostId} /> */}
+                {/* </section> */}
+                {/* <section>
+                    <SignIn />
+                </section> */}
             </div>
         );
     }

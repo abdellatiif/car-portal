@@ -12,12 +12,12 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
-    render Text:' @post'
+    render json: @post
   end 
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
    
     if @post.save
       render json: @post, status: :created, location: @post
@@ -40,7 +40,9 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
-    @post.destroy
+    if @post.user_id == current_user.id
+      @post.destroy
+    end
   end
 
   private
@@ -52,6 +54,6 @@ class PostsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:post).permit(:type, :description, :productionyear, :car_brand_id, :picture )
+      params.require(:post).permit(:type, :description, :productionyear, :car_brand_id, :picture, :millage, :color )
     end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
    # scope '/api' do
  #root to: 'pages#home'
  #namespace :api, defaults: {format: :json} do
@@ -7,12 +8,20 @@ Rails.application.routes.draw do
  scope :api, defaults: { format: :json } do
   scope :v1 do
     resources :car_brands
-
     resources :posts
     resources :comments
-    devise_scope :users do
-    post "sign_up", to: "registrations#create"
-    end
+    resources :users
+    devise_for :users,
+    path: '',
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      registration: 'signup'
+    },
+    controllers: {
+      sessions: 'session',
+      registrations: 'registrations'
+    }
     
   end
 end

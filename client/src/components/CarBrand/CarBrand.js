@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Post.css';
+import './CarBrand.css';
 const postListStyles = {
     display: "flex",
     flexDirection: "row",
@@ -8,22 +8,22 @@ const postListStyles = {
     justifyContent: "center",
   }
   
-  const postCardStyles = {
+  const CarBrandCardStyles = {
     maxWidth: "30%",
     minWidth: "150px",
     flex: "1",
     margin: "5px",
   }
 
-const post = (props) => (
-    <article className="Post" onClick={props.clicked}>
-        <img src = {props.post.picture_url}></img>
-        <h1>{props.post.description}</h1>
+const CarBrand = (props) => (
+    <article className="CarBrand" onClick={props.clicked}>
+        <img src = {props.car_brand.picture_url}></img>
+        <h1>{props.CarBrand.name}</h1>
         <div className="Info">
              
         </div>
     </article>
 );
 
-export default post;
+export default CarBrand;
 //<div className="Author">{props.author}</div> 
