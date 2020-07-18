@@ -1,4 +1,4 @@
-class  CarBrandsController < ApplicationController
+class Api::V1::Users::CarBrandsController < ApplicationController
   before_action :set_car_brand, only: [:show, :update, :destroy]
 
   # GET /car_brands
@@ -34,9 +34,6 @@ class  CarBrandsController < ApplicationController
   end
 
   # DELETE /car_brands/1
-  def destroy
-    @car_brand.destroy
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

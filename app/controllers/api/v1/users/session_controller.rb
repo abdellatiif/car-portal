@@ -1,4 +1,4 @@
-class SessionController < Devise::SessionsController
+class Api::V1::Users::SessionController < Devise::SessionsController
   before_action :authenticate_user!, except: [:create]
   before_action :sign_in_params, only: :create
   before_action :load_user, only: :create
@@ -35,7 +35,7 @@ class SessionController < Devise::SessionsController
         messages: "Cannot get User",
         is_success: false,
         data: {}
-      }, status: :failure
+      }, status: :unauthorized
     end
   end
 

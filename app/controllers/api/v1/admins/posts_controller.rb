@@ -1,6 +1,6 @@
-class Admin::PostsController < ApplicationController
+class Api::V1::Admins::PostsController < ApplicationController
     before_action :set_post, only: [:show, :update, :destroy]
-    #before_action :authenticate_user!, except: [:show, :index] 
+    # before_action :authenticate_admin!, except: [:show, :index] 
   
     # GET /posts
    
@@ -15,32 +15,25 @@ class Admin::PostsController < ApplicationController
       render json: @post
     end 
   
-    # POST /posts
-    def create
-      @post = current_user.posts.new(post_params)
-     
-      if @post.save
-        render json: @post, status: :created, location: @post
-      else
-        puts(@post.errors.full_messages)
-  
-        render json: @post.errors, status: :unprocessable_entity
-      end
-    end
-  
     # PATCH/PUT /posts/1
     def update
-      if @post.update(post_params)
-        render json: @post
-      else
-        puts(@post.errors)
-        render json: @post.errors, status: :unprocessable_entity
+      if current_admin
+        if @post.update(post_params)
+          render json: @post
+        else
+          puts(@post.errors)
+          render json: @post.errors, status: :unprocessable_entity
+        end
       end
     end
   
     # DELETE /posts/1
     def destroy
-      @post.destroy
+      if current_admin
+        @post.destroy
+      else
+        render json: @post.errors, status: :unauthorized
+      end
     end
   
     private

@@ -26,4 +26,8 @@ class ApplicationController < ActionController::API
       def current_user
         User.find_by(authentication_token: params[:authentication_token])
       end
+
+      def current_admin
+        Admin.find_by(authentication_token: params[:authentication_token])
+      end
 end
