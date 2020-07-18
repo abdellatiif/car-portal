@@ -18,7 +18,7 @@ const postListStyles = {
 const CarBrand = (props) => (
     <article className="CarBrand" onClick={props.clicked}>
         <img src = {props.car_brand.picture_url}></img>
-        <h1>{props.CarBrand.name}</h1>
+        <h1>{props.car_brand.name}</h1>
         <div className="Info">
              
         </div>

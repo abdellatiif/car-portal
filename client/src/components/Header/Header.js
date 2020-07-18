@@ -8,14 +8,12 @@ class Header extends Component {
     return (
       <nav className="pt-navbar">
         <div className="pt-navbar-group pt-align-left">
-          <div className="pt-navbar-heading">Chord Creator</div>
-          <input className="pt-input" placeholder="Search songs..." type="text" />
+          <div className="pt-navbar-heading">Car Portal</div>
+          <input className="pt-input" placeholder="Search cars..." type="text" />
         </div>
         <div className="pt-navbar-group pt-align-right">
-          <Link className="pt-button pt-minimal pt-icon-music" to="/songs">Songs</Link>
+          <Link className="pt-button pt-minimal pt-icon-music" to="/posts">Alk Cars</Link>
           <span className="pt-navbar-divider"></span>
-          <button className="pt-button pt-minimal pt-icon-user"></button>
-          <button className="pt-button pt-minimal pt-icon-cog"></button>
         </div>
       </nav>
     );

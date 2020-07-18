@@ -31,7 +31,7 @@ class Blog extends Component {
         //         this.setState({posts: updatedPosts});
              //   console.log( response );
             // } );
-            axios.get( '/api/v1/car_brands' )
+            axios.get( '/api/v1/users/car_brands' )
             .then( response => {
               const carBrands = response.data.slice(0, 4);
                 const updatedCarBrands = carBrands.map(carBrand => {
@@ -54,7 +54,7 @@ class Blog extends Component {
     render () {
         console.log("here   ")
         const carBrands = this.state.carBrands.map(car_brand => {
-            return <car_brand
+            return <CarBrand
                 key={car_brand.id}
                 car_brand = {car_brand} 
                 clicked={() => this.CarBrandSelectedHandler(CarBrand.id)} />;
