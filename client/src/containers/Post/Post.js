@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from '../../components/Header/Header';
 import PostComponent from '../../components/Post/Post';
-
+import post from '../../components/Post/Post';
+import history from '../../history'
 
 class Post extends Component {
     state = {
@@ -27,6 +28,7 @@ class Post extends Component {
 
     postSelectedHandler = (id) => {
         this.setState({selectedPostId: id});
+        history.push("/posts/" + id)
     }
     render () {
        const posts = this.state.posts.map(post => {

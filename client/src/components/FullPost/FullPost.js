@@ -3,42 +3,29 @@ import axios from 'axios';
 
 import './FullPost.css';
 
-class FullPost extends Component {
-    state = {
-        loadedPost: null
-    }
+const postListStyles = {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  }
+  
+  const postCardStyles = {
+    maxWidth: "30%",
+    minWidth: "150px",
+    flex: "1",
+    margin: "5px",
+  }
 
-    componentDidUpdate () {
-        if ( this.props.id ) {
-            if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id) ) {
-                axios.get( '/api/v1/posts' + this.props.id )
-                    .then( response => {
-                        // console.log(response);
-                        this.setState( { loadedPost: response.data } );
-                    } );
-            }
-        }
-    }
+const FullPostComponent = (props) => (
+    <div className="Info">
+        <img src = {props.post.picture_url}></img>
+        {/* <p>{props.post.user.full_name}</p> */}
+        <p>Description: {props.post.description}</p>  
+        <p>Color: {props.post.color}</p>
+        <p>Mileage: {props.post.millage}</p>
+        <p>Production Year: {props.post.productionyear}</p> 
+    </div>
+);
 
-    render () {
-        let post = <p style={{ textAlign: 'center' }}>Please select a Post!</p>;
-        if ( this.props.id ) {
-            post = <p style={{ textAlign: 'center' }}>Loading...!</p>;
-        }
-        if ( this.state.loadedPost ) {
-            post = (
-                <div className="FullPost">
-                    <h1>{this.state.loadedPost.productionyear}</h1>
-                    <p>{this.state.loadedPost.description}</p>
-                    <div className="Edit">
-                        <button className="Delete">Delete</button>
-                    </div>
-                </div>
-
-            );
-        }
-        return post;
-    }
-}
-
-export default FullPost;
+export default FullPostComponent;

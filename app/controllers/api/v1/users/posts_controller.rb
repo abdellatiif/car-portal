@@ -6,7 +6,7 @@ class Api::V1::Users::PostsController < ApplicationController
  
   def index
     @posts = Post.all
-
+    @posts = @posts.where(car_brand_id: params[:car_brand_id]) if params[:car_brand_id].present?
     render json: @posts
   end
 
@@ -20,10 +20,9 @@ class Api::V1::Users::PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
    
     if @post.save
-      render json: @post, status: :created, location: @post
+      render json: @post, status: :created
     else
-      puts(@post.errors.full_messages)
-
+      
       render json: @post.errors, status: :unprocessable_entity
     end
   end

@@ -3,6 +3,8 @@ import {Switch,Router,Route} from "react-router-dom";
 
 import Blog from './containers/Blog/Blog';
 import Post from './containers/Post/Post';
+import FullCarBrand from './containers/FullCarBrand/FullCarBrand';
+import FullPost from './containers/FullPost/FullPost';
 import SignIn from './components/SignIn/SignIn'
 import history from './history';
 import Header from './components/Header/Header'
@@ -15,9 +17,12 @@ class App extends Component {
 
           <Route component = {Header} />
           <Switch>
-            <Route exact path= "/" component = {SignIn} />
+            {/* <Route exact path= "/" component = {SignIn} /> */}
+            <Route path= "/carbrands/:id" component = {FullCarBrand}  />
             <Route path= "/home" component = {Blog}  />
+            <Route path= "/posts/:id" component = {FullPost}  />
             <Route path= "/posts" component = {Post}  />
+            
           </Switch>
        </div>
     </Router>

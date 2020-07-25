@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import SignIn from '../../components/SignIn/SignIn';
+import history from '../../history'
 
 import './Blog.css';
 
@@ -49,6 +50,7 @@ class Blog extends Component {
     // }
     CarBrandSelectedHandler = (id) => {
         this.setState({selectedCarBrandId: id});
+        history.push("/carbrands/" + id)
     }
 
     render () {
@@ -57,7 +59,7 @@ class Blog extends Component {
             return <CarBrand
                 key={car_brand.id}
                 car_brand = {car_brand} 
-                clicked={() => this.CarBrandSelectedHandler(CarBrand.id)} />;
+                clicked={() => this.CarBrandSelectedHandler(car_brand.id)} />;
         });
        // console.log(posts)
     //    const posts = this.state.posts.map(post => {
