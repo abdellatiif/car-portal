@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :car_brands, :only => [:index, :show]
       resources :posts
       resources :comments
+      resources :users, :only => [:show]
       devise_for :users,
       path: '',
       path_names: {

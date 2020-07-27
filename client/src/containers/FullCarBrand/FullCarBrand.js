@@ -3,13 +3,12 @@ import axios from 'axios';
 import Header from '../../components/Header/Header';
 import Post from '../../components/Post/Post';
 import CarBrand from '../../components/CarBrand/CarBrand';
-import Button from '../../components/Button/Button';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import SignIn from '../../components/SignIn/SignIn';
 import history from '../../history'
 import PostComponent from '../../components/Post/Post';
-
+import Button from '@material-ui/core/Button';
  
 class FullCarBrand extends Component {
     state = {
@@ -52,10 +51,14 @@ class FullCarBrand extends Component {
         console.log(this.state.posts)
         const posts = this.state.posts.map(post => {
              
-            return <PostComponent
+            return (
+            <div>
+            <PostComponent
                 key={post.id}
                 post = {post} 
                 clicked={() => this.postSelectedHandler(post.id)} />;
+
+            </div>)
         });
         
         return (

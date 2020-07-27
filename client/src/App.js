@@ -9,6 +9,13 @@ import Login from './containers/Login/Login'
 import Register from './containers/Register/Register'
 import history from './history';
 import Header from './components/Header/Header'
+import User from './containers/User/Show'
+import AdminLogin from './containers/Admin/Login'
+import AdminHome from './containers/Admin/CarBrands'
+import AdminPosts from './containers/Admin/Posts'
+import AdminUsers from './containers/Admin/Users'
+
+import Payment from './containers/Payment'
 
 class App extends Component {
   render() {
@@ -24,6 +31,14 @@ class App extends Component {
             <Route path= "/carbrands/:id" component = {FullCarBrand}  />
             <Route path= "/posts/:id" component = {FullPost}  />
             <Route path= "/posts" component = {Post}  />
+            <Route path= "/payment" component = {Payment}  />
+            <Route path= "/profile/:id" component = {User}  />
+            <Route path= "/admin/signin" component = {AdminLogin}  />
+            <Route path= "/admin/posts" component = {AdminPosts}  />
+            <Route path= "/admin/users" component = {AdminUsers}  />
+            <Route path= "/admin" component = {AdminHome}  />
+            
+
             
           </Switch>
        </div>
@@ -34,32 +49,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// render() {
-//   return (
-//     <div style={{maxWidth: "1160px", margin: "0 auto"}}>
-//       <BrowserRouter>
-//         <div>
-//           <Header />
-//           <div className="main-content" style={{padding: "1em"}}>
-//             <div className="workspace">
-//               <Route exact path="/songs" render={(props) => {
-//                   return <SongList songs={this.state.songs} />
-//               }} />
-//             <Route path="/songs/:songId" render={(props) => {
-//               const song = this.state.songs[props.match.params.songId];
-//               return (
-//                 song
-//                 ? <ChordEditor song={song} updateSong={this.updateSong} />
-//                 : <h1>Song not found</h1>
-//               )
-//             }} />
-//           </div>
-//         </div>
-//         <Footer />
-//       </div>
-//     </BrowserRouter>
-//   </div>
-//   );
-// }

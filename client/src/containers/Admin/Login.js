@@ -16,7 +16,7 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post('/api/v1/users/login', {
+    axios.post('/api/v1/admins/login', {
         sign_in:
         {
             email: email,
@@ -25,11 +25,9 @@ export default function Login() {
         
       })
       .then(function (response) {
-        const authentication_token = response.data.data.user.authentication_token;
-        const user_id = response.data.data.user.id;
-        localStorage.setItem('authentication_token', authentication_token);
-        localStorage.setItem('user_id', user_id);
-        history.push("/")
+        const adminAuthenticationToken = response.data.data.admin.authentication_token;
+        localStorage.setItem('admin_authentication_token', adminAuthenticationToken);
+        history.push("/admin")
       })
       .catch(function (error) {
         alert("Invalid Email or password")

@@ -39,9 +39,7 @@ class Api::V1::Users::PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
-    if @post.user_id == current_user.id
-      @post.destroy
-    end
+     @post.destroy
   end
 
   private

@@ -7,6 +7,7 @@ import FullPostComponent from '../../components/FullPost/FullPost';
 class FullPost extends Component {
     state = {
         post: {},
+        user: {}
     }
 
     componentDidMount () {
@@ -17,6 +18,8 @@ class FullPost extends Component {
             .then( response => {
                 const post = response.data
                 this.setState({post: post});
+                const user = response.data.user
+                this.setState({user: user});
                console.log( response );
             } );
     }
@@ -28,6 +31,7 @@ class FullPost extends Component {
         console.log(this.state.post)
         const fullpost = <FullPostComponent 
             post = {this.state.post}
+            user = {this.state.user}
         />;
         return (
             <div>
