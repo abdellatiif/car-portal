@@ -60,9 +60,15 @@ class User extends Component {
             <div>
                 <section>
                     <h2>Hi {this.state.user.full_name} !!</h2>
-                    <p>email: {this.state.user.email}</p>
+                    <Button variant="contained" color="primary" style={{"float": "left"}}>
+                         ADD NEW POST
+                    </Button>
+                    <br />
+                    <br />
+                    <p>Email: {this.state.user.email}</p>
                     <p>{this.state.user.type} </p>
                     {posts}
+                   
                 </section>
             </div>
         );
